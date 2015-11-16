@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         resultText = (EditText) findViewById(R.id.result_text);
+        resultText.setText(readResult());
 
         buttonPlus = (Button) findViewById(R.id.button_plus);
         buttonMinus = (Button) findViewById(R.id.button_minus);
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resultText.setText(calculateInput());
-//                saveResult();
+                saveResult();
             }
         });
 
@@ -188,19 +189,17 @@ public class MainActivity extends AppCompatActivity {
                 resultText.setText(String.format("%s9", resultText.getText()));
             }
         });
-
-//        resultText.setText(readResult());
     }
 
     private void saveResult() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.last_result), resultText.getText().toString());
         editor.apply();
     }
 
     private String readResult() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         String defaultValue = "";
         return sharedPref.getString(getString(R.string.last_result), defaultValue);
     }
@@ -263,9 +262,5 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return resultText;
         }
-    }
-
-    public Activity getActivity() {
-        return activity;
     }
 }
