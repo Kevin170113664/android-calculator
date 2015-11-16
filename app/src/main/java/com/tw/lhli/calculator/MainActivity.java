@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -230,14 +231,14 @@ public class MainActivity extends AppCompatActivity {
         List<String> originOperationArray = splitInput(input);
         List<String> reversePolishNotation = transformToReversePolishNotation(originOperationArray);
         Double result = calculateReversePolishNotation(reversePolishNotation);
-        return removeDotFromInteger(result.toString());
+        return removeDotFromInteger((result == null ? "Error" : result).toString());
     }
 
     private Double calculateReversePolishNotation(List<String> reversePolishNotation) {
         Stack stack = new Stack();
         String result = "0";
         for (String operation : reversePolishNotation) {
-            if (operation.matches("^[0-9]")) {
+            if (operation.matches("[0-9]+|[0-9]+\\.[0-9]+")) {
                 stack.push(operation);
             } else {
                 result = calculateTemp(stack.pop(), operation, stack.pop());
@@ -280,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
         Stack stack = new Stack();
         List<String> reversePolishNotation = new ArrayList<>();
         for (String operation : originOperationArray) {
-            if (operation.matches("^[0-9]")) {
+            if (operation.matches("[0-9]+|[0-9]+\\.[0-9]+")) {
                 reversePolishNotation.add(operation);
             } else if (operation.matches("^[(]")) {
                 stack.push(operation);
@@ -320,22 +321,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<String> splitInput(String input) {
-        List<String> inputArray = new ArrayList<String>();
-        int i = 0;
-        for (Character c : input.toCharArray()) {
-            if (c.toString().matches("[0-9]|[\\.]")) {
-                if (inputArray.size() <= i) {
-                    inputArray.add(c.toString());
-                } else {
-                    inputArray.add(inputArray.get(i) + c);
-                    inputArray.remove(i);
-                }
-            } else {
-                inputArray.add(c.toString());
-                i += 2;
-            }
-        }
-        return inputArray;
+        String regex = "(?<=op)|(?=op)".replace("op", "[-+×÷()]");
+        List<String> result = Arrays.asList(input.split(regex));
+        return result.subList(1, result.size());
     }
 
     private String deleteLastChar(String resultText) {
