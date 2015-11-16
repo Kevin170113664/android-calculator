@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText resultText;
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Button buttonEqual;
     Button buttonDelete;
     Button buttonClear;
+    Button buttonLeftBracket;
+    Button buttonRightBracket;
 
     Button button0;
     Button button1;
@@ -51,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         buttonEqual = (Button) findViewById(R.id.button_equal);
         buttonDelete = (Button) findViewById(R.id.button_delete);
         buttonClear = (Button) findViewById(R.id.button_clear);
+        buttonLeftBracket = (Button) findViewById(R.id.button_left_bracket);
+        buttonRightBracket = (Button) findViewById(R.id.button_right_bracket);
 
         button0 = (Button) findViewById(R.id.button_0);
         button1 = (Button) findViewById(R.id.button_1);
@@ -117,6 +124,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resultText.setText("");
+            }
+        });
+
+        buttonLeftBracket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s(", resultText.getText()));
+            }
+        });
+
+        buttonRightBracket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s)", resultText.getText()));
             }
         });
 
@@ -206,7 +227,50 @@ public class MainActivity extends AppCompatActivity {
 
     private String calculateInput() {
         String input = resultText.getText().toString();
-        return removeDotFromInteger(calculateResult(splitInput(input)));
+        List<String> originOperationArray = splitInput(input);
+        List<String> reversePolishNotation = transformToReversePolishNotation(originOperationArray);
+        Double result = calculateReversePolishNotation(reversePolishNotation);
+        return removeDotFromInteger(result.toString());
+    }
+
+    private Double calculateReversePolishNotation(List<String> reversePolishNotation) {
+
+        return null;
+    }
+
+    private List<String> transformToReversePolishNotation(List<String> originOperationArray) {
+        Stack stack = new Stack();
+        List<String> reversePolishNotation = new ArrayList<>();
+        for (String operation : originOperationArray) {
+            if (operation.matches("^[0-9]")) {
+                reversePolishNotation.add(operation);
+            } else if (operation.matches("^[(]")) {
+                stack.push(operation);
+            } else if (operation.matches("^[)]")) {
+                do {
+                    reversePolishNotation.add(stack.pop());
+                } while (!stack.getStackTop().equals("("));
+                stack.pop();
+            } else {
+                if (Stack.priority(operation, stack.getStackTop())) {
+                    stack.push(operation);
+                } else {
+                    while (!stack.isEmpty()) {
+                        reversePolishNotation.add(stack.pop());
+                        if (Stack.priority(operation, stack.getStackTop())) {
+                            break;
+                        }
+                    }
+                    stack.push(operation);
+                }
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            reversePolishNotation.add(stack.pop());
+        }
+
+        return reversePolishNotation;
     }
 
     @NonNull
@@ -217,40 +281,45 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private String calculateResult(String[] inputArray) {
+    private String calculateResult(List<String> inputArray) {
         String result;
-        switch (inputArray[1]) {
-            case "+":
-                result = String.format("%s", Double.parseDouble(inputArray[0]) + Double.parseDouble(inputArray[2]));
-                break;
-            case "-":
-                result = String.format("%s", Double.parseDouble(inputArray[0]) - Double.parseDouble(inputArray[2]));
-                break;
-            case "×":
-                result = String.format("%s", Double.parseDouble(inputArray[0]) * Double.parseDouble(inputArray[2]));
-                break;
-            case "÷":
-                if (Double.parseDouble(inputArray[2]) == 0.0) {
-                    result = "Error";
-                } else {
-                    result = String.format("%s", Double.parseDouble(inputArray[0]) / Double.parseDouble(inputArray[2]));
-                }
-                break;
-            default:
-                result = "0";
-        }
-        return result;
+//        switch (inputArray[1]) {
+//            case "+":
+//                result = String.format("%s", Double.parseDouble(inputArray[0]) + Double.parseDouble(inputArray[2]));
+//                break;
+//            case "-":
+//                result = String.format("%s", Double.parseDouble(inputArray[0]) - Double.parseDouble(inputArray[2]));
+//                break;
+//            case "×":
+//                result = String.format("%s", Double.parseDouble(inputArray[0]) * Double.parseDouble(inputArray[2]));
+//                break;
+//            case "÷":
+//                if (Double.parseDouble(inputArray[2]) == 0.0) {
+//                    result = "Error";
+//                } else {
+//                    result = String.format("%s", Double.parseDouble(inputArray[0]) / Double.parseDouble(inputArray[2]));
+//                }
+//                break;
+//            default:
+//                result = "0";
+//        }
+        return "HEY";
     }
 
-    private String[] splitInput(String input) {
-        String[] inputArray = {"", "", ""};
+    private List<String> splitInput(String input) {
+        List<String> inputArray = new ArrayList<String>();
         int i = 0;
         for (Character c : input.toCharArray()) {
             if (c.toString().matches("[0-9]|[\\.]")) {
-                inputArray[i] += c;
+                if (inputArray.size() <= i) {
+                    inputArray.add(c.toString());
+                } else {
+                    inputArray.add(inputArray.get(i) + c);
+                    inputArray.remove(i);
+                }
             } else {
-                inputArray[1] += c;
-                i = 2;
+                inputArray.add(c.toString());
+                i += 2;
             }
         }
         return inputArray;
