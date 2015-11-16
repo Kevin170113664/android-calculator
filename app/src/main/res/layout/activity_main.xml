@@ -23,7 +23,7 @@
                 android:gravity="end"
                 android:textColor="@color/colorButtonText"
                 android:editable="false"
-                android:id="@+id/edit_result"/>
+                android:id="@+id/result_text"/>
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
