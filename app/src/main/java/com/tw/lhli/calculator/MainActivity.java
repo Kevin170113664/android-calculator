@@ -58,42 +58,42 @@ public class MainActivity extends AppCompatActivity {
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultText.setText(resultText.getText() + "+");
+                resultText.setText(String.format("%s+", resultText.getText()));
             }
         });
 
         buttonMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultText.setText(resultText.getText() + "-");
+                resultText.setText(String.format("%s-", resultText.getText()));
             }
         });
 
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultText.setText(resultText.getText() + "×");
+                resultText.setText(String.format("%s×", resultText.getText()));
             }
         });
 
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultText.setText(resultText.getText() + "÷");
+                resultText.setText(String.format("%s÷", resultText.getText()));
             }
         });
 
         buttonDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultText.setText(resultText.getText() + ".");
+                resultText.setText(String.format("%s.", resultText.getText()));
             }
         });
 
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                resultText.setText(calculateInput());
             }
         });
 
@@ -103,11 +103,118 @@ public class MainActivity extends AppCompatActivity {
                 resultText.setText(deleteLastChar(resultText.getText().toString()));
             }
         });
+
+        button0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s0", resultText.getText()));
+            }
+        });
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s1", resultText.getText()));
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s2", resultText.getText()));
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s3", resultText.getText()));
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s4", resultText.getText()));
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s5", resultText.getText()));
+            }
+        });
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s6", resultText.getText()));
+            }
+        });
+
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s7", resultText.getText()));
+            }
+        });
+
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s8", resultText.getText()));
+            }
+        });
+
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText(String.format("%s9", resultText.getText()));
+            }
+        });
+    }
+
+    private String calculateInput() {
+        String input = resultText.getText().toString();
+        String result = "";
+        String[] inputArray = {"", "", ""};
+        int i = 0;
+        for (Character c : input.toCharArray()) {
+            if (c.toString().matches("[0-9]")) {
+                inputArray[i] += c;
+            } else {
+                inputArray[1] += c;
+                i = 2;
+            }
+        }
+        switch (inputArray[1]) {
+            case "+":
+                result = String.format("%s", Double.parseDouble(inputArray[0]) + Double.parseDouble(inputArray[2]));
+                break;
+            case "-":
+                result = String.format("%s", Double.parseDouble(inputArray[0]) - Double.parseDouble(inputArray[2]));
+                break;
+            case "×":
+                result = String.format("%s", Double.parseDouble(inputArray[0]) * Double.parseDouble(inputArray[2]));
+                break;
+            case "÷":
+                result = String.format("%s", Double.parseDouble(inputArray[0]) / Double.parseDouble(inputArray[2]));
+                break;
+            default:
+                result = "0";
+        }
+
+        if (result.substring(result.length() - 2, result.length()).equals(".0")) {
+            result = result.substring(0, result.length() - 2);
+        }
+
+        return result;
     }
 
     private String deleteLastChar(String resultText) {
         if (resultText.length() != 0) {
-            return resultText.substring(0, resultText.length()-1);
+            return resultText.substring(0, resultText.length() - 1);
         } else {
             return resultText;
         }
