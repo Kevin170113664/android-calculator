@@ -234,8 +234,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Double calculateReversePolishNotation(List<String> reversePolishNotation) {
+        Stack stack = new Stack();
+        String result = "0";
+        for (String operation : reversePolishNotation) {
+            if (operation.matches("^[0-9]")) {
+                stack.push(operation);
+            } else {
+                result = calculateTemp(stack.pop(), operation, stack.pop());
+                if (result.equals("Error")) {
+                    return null;
+                } else {
+                    stack.push(result);
+                }
+            }
+        }
+        return Double.parseDouble(result);
+    }
 
-        return null;
+    private String calculateTemp(String secondOperation, String symbol, String firstOperation) {
+        String result;
+        switch (symbol) {
+            case "+":
+                result = String.format("%s", Double.parseDouble(firstOperation) + Double.parseDouble(secondOperation));
+                break;
+            case "-":
+                result = String.format("%s", Double.parseDouble(firstOperation) - Double.parseDouble(secondOperation));
+                break;
+            case "×":
+                result = String.format("%s", Double.parseDouble(firstOperation) * Double.parseDouble(secondOperation));
+                break;
+            case "÷":
+                if (Double.parseDouble(secondOperation) == 0.0) {
+                    result = "Error";
+                } else {
+                    result = String.format("%s", Double.parseDouble(firstOperation) / Double.parseDouble(secondOperation));
+                }
+                break;
+            default:
+                result = "0";
+        }
+        return result;
     }
 
     private List<String> transformToReversePolishNotation(List<String> originOperationArray) {
@@ -279,31 +317,6 @@ public class MainActivity extends AppCompatActivity {
             result = result.substring(0, result.length() - 2);
         }
         return result;
-    }
-
-    private String calculateResult(List<String> inputArray) {
-        String result;
-//        switch (inputArray[1]) {
-//            case "+":
-//                result = String.format("%s", Double.parseDouble(inputArray[0]) + Double.parseDouble(inputArray[2]));
-//                break;
-//            case "-":
-//                result = String.format("%s", Double.parseDouble(inputArray[0]) - Double.parseDouble(inputArray[2]));
-//                break;
-//            case "×":
-//                result = String.format("%s", Double.parseDouble(inputArray[0]) * Double.parseDouble(inputArray[2]));
-//                break;
-//            case "÷":
-//                if (Double.parseDouble(inputArray[2]) == 0.0) {
-//                    result = "Error";
-//                } else {
-//                    result = String.format("%s", Double.parseDouble(inputArray[0]) / Double.parseDouble(inputArray[2]));
-//                }
-//                break;
-//            default:
-//                result = "0";
-//        }
-        return "HEY";
     }
 
     private List<String> splitInput(String input) {
