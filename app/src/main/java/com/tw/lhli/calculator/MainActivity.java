@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonDot;
     Button buttonEqual;
     Button buttonDelete;
+    Button buttonClear;
 
     Button button0;
     Button button1;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDot = (Button) findViewById(R.id.button_dot);
         buttonEqual = (Button) findViewById(R.id.button_equal);
         buttonDelete = (Button) findViewById(R.id.button_delete);
+        buttonClear = (Button) findViewById(R.id.button_clear);
 
         button0 = (Button) findViewById(R.id.button_0);
         button1 = (Button) findViewById(R.id.button_1);
@@ -101,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resultText.setText(deleteLastChar(resultText.getText().toString()));
+            }
+        });
+
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultText.setText("");
             }
         });
 
@@ -181,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         String[] inputArray = {"", "", ""};
         int i = 0;
         for (Character c : input.toCharArray()) {
-            if (c.toString().matches("[0-9]")) {
+            if (c.toString().matches("[0-9]|[\\.]")) {
                 inputArray[i] += c;
             } else {
                 inputArray[1] += c;
@@ -199,7 +208,11 @@ public class MainActivity extends AppCompatActivity {
                 result = String.format("%s", Double.parseDouble(inputArray[0]) * Double.parseDouble(inputArray[2]));
                 break;
             case "÷":
-                result = String.format("%s", Double.parseDouble(inputArray[0]) / Double.parseDouble(inputArray[2]));
+                if (Double.parseDouble(inputArray[2]) == 0.0) {
+                    result = "Error";
+                } else {
+                    result = String.format("%s", Double.parseDouble(inputArray[0]) / Double.parseDouble(inputArray[2]));
+                }
                 break;
             default:
                 result = "0";
