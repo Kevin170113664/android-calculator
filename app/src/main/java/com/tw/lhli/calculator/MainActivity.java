@@ -1,5 +1,9 @@
 package com.tw.lhli.calculator;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Button button7;
     Button button8;
     Button button9;
+    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resultText.setText(calculateInput());
+//                saveResult();
             }
         });
 
@@ -182,21 +188,38 @@ public class MainActivity extends AppCompatActivity {
                 resultText.setText(String.format("%s9", resultText.getText()));
             }
         });
+
+//        resultText.setText(readResult());
+    }
+
+    private void saveResult() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.last_result), resultText.getText().toString());
+        editor.apply();
+    }
+
+    private String readResult() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String defaultValue = "";
+        return sharedPref.getString(getString(R.string.last_result), defaultValue);
     }
 
     private String calculateInput() {
         String input = resultText.getText().toString();
-        String result = "";
-        String[] inputArray = {"", "", ""};
-        int i = 0;
-        for (Character c : input.toCharArray()) {
-            if (c.toString().matches("[0-9]|[\\.]")) {
-                inputArray[i] += c;
-            } else {
-                inputArray[1] += c;
-                i = 2;
-            }
+        return removeDotFromInteger(calculateResult(splitInput(input)));
+    }
+
+    @NonNull
+    private String removeDotFromInteger(String result) {
+        if (result.substring(result.length() - 2, result.length()).equals(".0")) {
+            result = result.substring(0, result.length() - 2);
         }
+        return result;
+    }
+
+    private String calculateResult(String[] inputArray) {
+        String result;
         switch (inputArray[1]) {
             case "+":
                 result = String.format("%s", Double.parseDouble(inputArray[0]) + Double.parseDouble(inputArray[2]));
@@ -217,12 +240,21 @@ public class MainActivity extends AppCompatActivity {
             default:
                 result = "0";
         }
-
-        if (result.substring(result.length() - 2, result.length()).equals(".0")) {
-            result = result.substring(0, result.length() - 2);
-        }
-
         return result;
+    }
+
+    private String[] splitInput(String input) {
+        String[] inputArray = {"", "", ""};
+        int i = 0;
+        for (Character c : input.toCharArray()) {
+            if (c.toString().matches("[0-9]|[\\.]")) {
+                inputArray[i] += c;
+            } else {
+                inputArray[1] += c;
+                i = 2;
+            }
+        }
+        return inputArray;
     }
 
     private String deleteLastChar(String resultText) {
@@ -231,5 +263,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return resultText;
         }
+    }
+
+    public Activity getActivity() {
+        return activity;
     }
 }
