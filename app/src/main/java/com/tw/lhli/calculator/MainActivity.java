@@ -15,6 +15,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.button_8) Button button8;
     @Bind(R.id.button_9) Button button9;
 
+    @OnClick({R.id.button_plus, R.id.button_minus, R.id.button_multiply, R.id.button_divide,
+              R.id.button_dot, R.id.button_left_bracket, R.id.button_right_bracket,
+              R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4,
+              R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9})
+    public void showSymbolInResultText(View view) {
+        resultText.setText(String.format("%s%s", resultText.getText(), ((Button)view).getText()));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,41 +57,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         resultText.setText(readResult());
-
-        buttonPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s+", resultText.getText()));
-            }
-        });
-
-        buttonMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s-", resultText.getText()));
-            }
-        });
-
-        buttonMultiply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s×", resultText.getText()));
-            }
-        });
-
-        buttonDivide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s÷", resultText.getText()));
-            }
-        });
-
-        buttonDot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s.", resultText.getText()));
-            }
-        });
 
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,90 +77,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resultText.setText("");
-            }
-        });
-
-        buttonLeftBracket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s(", resultText.getText()));
-            }
-        });
-
-        buttonRightBracket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s)", resultText.getText()));
-            }
-        });
-
-        button0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s0", resultText.getText()));
-            }
-        });
-
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s1", resultText.getText()));
-            }
-        });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s2", resultText.getText()));
-            }
-        });
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s3", resultText.getText()));
-            }
-        });
-
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s4", resultText.getText()));
-            }
-        });
-
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s5", resultText.getText()));
-            }
-        });
-
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s6", resultText.getText()));
-            }
-        });
-
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s7", resultText.getText()));
-            }
-        });
-
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s8", resultText.getText()));
-            }
-        });
-
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(String.format("%s9", resultText.getText()));
             }
         });
     }
