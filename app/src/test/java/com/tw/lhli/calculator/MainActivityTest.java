@@ -25,16 +25,37 @@ public class MainActivityTest {
     }
 
     @Test
-    public void clickingButton_shouldShowInResultText() throws Exception {
-        mainActivity.buttonPlus.performClick();
-        mainActivity.buttonMinus.performClick();
-        mainActivity.buttonMultiply.performClick();
-        mainActivity.buttonDivide.performClick();
-        assertEquals(mainActivity.resultText.getText().toString(), "+-×÷");
+    public void clickingClearButton_shouldClearResultText() {
+        mainActivity.resultText.setText("This is my first android app.");
+        mainActivity.buttonClear.performClick();
+
+        assertEquals(mainActivity.resultText.getText().toString(), "");
     }
 
     @Test
     public void clickingDeleteButton_shouldDeleteLastCharInResultText() {
+        mainActivity.resultText.setText("Hey, Hey, Hey");
+        mainActivity.buttonDelete.performClick();
 
+        assertEquals(mainActivity.resultText.getText().toString(), "Hey, Hey, He");
+    }
+
+    @Test
+    public void clickingOperatorButton_shouldShowInResultText() throws Exception {
+        mainActivity.buttonClear.performClick();
+        mainActivity.buttonPlus.performClick();
+        assertEquals(mainActivity.resultText.getText().toString(), "+");
+
+        mainActivity.buttonClear.performClick();
+        mainActivity.buttonMinus.performClick();
+        assertEquals(mainActivity.resultText.getText().toString(), "-");
+
+        mainActivity.buttonClear.performClick();
+        mainActivity.buttonMultiply.performClick();
+        assertEquals(mainActivity.resultText.getText().toString(), "×");
+
+        mainActivity.buttonClear.performClick();
+        mainActivity.buttonDivide.performClick();
+        assertEquals(mainActivity.resultText.getText().toString(), "÷");
     }
 }
