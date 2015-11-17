@@ -323,7 +323,12 @@ public class MainActivity extends AppCompatActivity {
     private List<String> splitInput(String input) {
         String regex = "(?<=op)|(?=op)".replace("op", "[-+×÷()]");
         List<String> result = Arrays.asList(input.split(regex));
-        return result.subList(1, result.size());
+        if (result.get(0).equals("")) {
+            result = result.subList(1, result.size());
+        } else if (result.get(result.size() - 1).equals("")) {
+            result = result.subList(0, result.size() - 1);
+        }
+        return result;
     }
 
     private String deleteLastChar(String resultText) {
