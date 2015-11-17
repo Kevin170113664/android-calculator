@@ -54,28 +54,27 @@ public class MainActivity extends AppCompatActivity {
         resultText.setText(readResult());
     }
 
-    private void saveResult() {
+    protected void saveResult() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.last_result), resultText.getText().toString());
         editor.apply();
     }
 
-    private String readResult() {
+    protected String readResult() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         String defaultValue = "";
         return sharedPref.getString(getString(R.string.last_result), defaultValue);
     }
 
     private String calculateInput() {
-        String input = resultText.getText().toString();
-        List<String> originOperationArray = splitInput(input);
-        List<String> reversePolishNotation = transformToReversePolishNotation(originOperationArray);
+        List<String> originOperationList = splitInput(resultText.getText().toString());
+        List<String> reversePolishNotation = transformToReversePolishNotation(originOperationList);
         Double result = calculateReversePolishNotation(reversePolishNotation);
         return removeDotFromInteger((result == null ? getString(R.string.result_text_error) : result).toString());
     }
 
-    private Double calculateReversePolishNotation(List<String> reversePolishNotation) {
+    protected Double calculateReversePolishNotation(List<String> reversePolishNotation) {
         Stack stack = new Stack();
         String result = "0";
         for (String operation : reversePolishNotation) {
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private List<String> transformToReversePolishNotation(List<String> originOperationArray) {
+    protected List<String> transformToReversePolishNotation(List<String> originOperationArray) {
         Stack stack = new Stack();
         List<String> reversePolishNotation = new ArrayList<>();
         for (String operation : originOperationArray) {

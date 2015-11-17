@@ -148,4 +148,37 @@ public class MainActivityTest {
         expectList = Arrays.asList("2.5", "-", "0.4", "×", "(", "250", "+", "88", ")");
         assertEquals(expectList, mainActivity.splitInput("2.5-0.4×(250+88)"));
     }
+
+    @Test
+    public void shouldTransformToReversePolishNotation() {
+        List<String> originOperationList = Arrays.asList("(", "5.5", "-", "0.5", ")", "×", "9.5", "+", "380", "÷", "10");
+        List<String> expectList = Arrays.asList("5.5", "0.5", "-", "9.5", "×", "380", "10", "÷", "+");
+
+        assertEquals(expectList, mainActivity.transformToReversePolishNotation(originOperationList));
+    }
+
+    @Test
+    public void shouldCalculateReversePolishNotationCorrectly() {
+        List<String> reversePolishNotation = Arrays.asList("5.5", "0.5", "-", "9.5", "×", "380", "10", "÷", "+");
+        Double expectResult = 85.5;
+
+        assertEquals(expectResult, mainActivity.calculateReversePolishNotation(reversePolishNotation));
+    }
+
+    @Test
+    public void shouldRetainResultWhenQuitApp() {
+        resultText.setText("250.666");
+        mainActivity.saveResult();
+        resultText.setText("Start Dash!");
+
+        assertEquals("250.666", mainActivity.readResult());
+    }
+
+    @Test
+    public void shouldShowErrorWhenDividedZero() {
+        resultText.setText("0÷0");
+        buttonEqual.performClick();
+
+        assertEquals("Error", resultText.getText().toString());
+    }
 }
