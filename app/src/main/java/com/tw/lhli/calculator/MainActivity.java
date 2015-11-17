@@ -13,61 +13,41 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText resultText;
+    @Bind(R.id.result_text) EditText resultText;
+    @Bind(R.id.button_plus) Button buttonPlus;
+    @Bind(R.id.button_minus) Button buttonMinus;
+    @Bind(R.id.button_multiply) Button buttonMultiply;
+    @Bind(R.id.button_divide) Button buttonDivide;
+    @Bind(R.id.button_dot) Button buttonDot;
+    @Bind(R.id.button_equal) Button buttonEqual;
+    @Bind(R.id.button_delete) Button buttonDelete;
+    @Bind(R.id.button_clear) Button buttonClear;
+    @Bind(R.id.button_left_bracket) Button buttonLeftBracket;
+    @Bind(R.id.button_right_bracket) Button buttonRightBracket;
 
-    Button buttonPlus;
-    Button buttonMinus;
-    Button buttonMultiply;
-    Button buttonDivide;
-    Button buttonDot;
-    Button buttonEqual;
-    Button buttonDelete;
-    Button buttonClear;
-    Button buttonLeftBracket;
-    Button buttonRightBracket;
-
-    Button button0;
-    Button button1;
-    Button button2;
-    Button button3;
-    Button button4;
-    Button button5;
-    Button button6;
-    Button button7;
-    Button button8;
-    Button button9;
+    @Bind(R.id.button_0) Button button0;
+    @Bind(R.id.button_1) Button button1;
+    @Bind(R.id.button_2) Button button2;
+    @Bind(R.id.button_3) Button button3;
+    @Bind(R.id.button_4) Button button4;
+    @Bind(R.id.button_5) Button button5;
+    @Bind(R.id.button_6) Button button6;
+    @Bind(R.id.button_7) Button button7;
+    @Bind(R.id.button_8) Button button8;
+    @Bind(R.id.button_9) Button button9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        resultText = (EditText) findViewById(R.id.result_text);
         resultText.setText(readResult());
-
-        buttonPlus = (Button) findViewById(R.id.button_plus);
-        buttonMinus = (Button) findViewById(R.id.button_minus);
-        buttonMultiply = (Button) findViewById(R.id.button_multiply);
-        buttonDivide = (Button) findViewById(R.id.button_divide);
-        buttonDot = (Button) findViewById(R.id.button_dot);
-        buttonEqual = (Button) findViewById(R.id.button_equal);
-        buttonDelete = (Button) findViewById(R.id.button_delete);
-        buttonClear = (Button) findViewById(R.id.button_clear);
-        buttonLeftBracket = (Button) findViewById(R.id.button_left_bracket);
-        buttonRightBracket = (Button) findViewById(R.id.button_right_bracket);
-
-        button0 = (Button) findViewById(R.id.button_0);
-        button1 = (Button) findViewById(R.id.button_1);
-        button2 = (Button) findViewById(R.id.button_2);
-        button3 = (Button) findViewById(R.id.button_3);
-        button4 = (Button) findViewById(R.id.button_4);
-        button5 = (Button) findViewById(R.id.button_5);
-        button6 = (Button) findViewById(R.id.button_6);
-        button7 = (Button) findViewById(R.id.button_7);
-        button8 = (Button) findViewById(R.id.button_8);
-        button9 = (Button) findViewById(R.id.button_9);
 
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
