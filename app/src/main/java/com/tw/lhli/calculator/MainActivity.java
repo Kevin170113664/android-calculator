@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
               R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4,
               R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9})
     public void showSymbolInResultText(View view) {
-        resultText.setText(String.format("%s%s", resultText.getText(), ((Button)view).getText()));
+        if (validateInput(String.format("%s", ((Button) view).getText()))) {
+            resultText.setText(String.format("%s%s", resultText.getText(), ((Button) view).getText()));
+        }
     }
 
     @OnClick(R.id.button_equal)
     public void calculate() {
-        resultText.setText(calculateInput());
-        saveResult();
+        if (validateInput()) {
+            resultText.setText(calculateInput());
+            saveResult();
+        }
     }
 
     @OnClick(R.id.button_delete)
@@ -55,16 +59,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void saveResult() {
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(getString(R.string.last_result), resultText.getText().toString());
         editor.apply();
     }
 
     protected String readResult() {
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         String defaultValue = "";
-        return sharedPref.getString(getString(R.string.last_result), defaultValue);
+        return sharedPreferences.getString(getString(R.string.last_result), defaultValue);
     }
 
     private String calculateInput() {
@@ -182,5 +186,22 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return resultText;
         }
+    }
+
+    protected boolean validateInput(String inputCharacter) {
+        String input = resultText.getText().toString();
+        if (inputCharacter.matches(getString(R.string.reg_operators))
+            && input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
+            return false;
+        }
+        return true;
+    }
+
+    protected boolean validateInput() {
+        String input = resultText.getText().toString();
+        if (input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
+            return false;
+        }
+        return true;
     }
 }

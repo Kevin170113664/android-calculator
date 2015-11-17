@@ -17,6 +17,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 
 
 @RunWith(RobolectricGradleTestRunner.class)
@@ -180,5 +182,22 @@ public class MainActivityTest {
         buttonEqual.performClick();
 
         assertEquals("Error", resultText.getText().toString());
+    }
+
+    @Test
+    public void shouldValidateInput() {
+        resultText.setText("0÷");
+        assertFalse(mainActivity.validateInput("+"));
+
+        resultText.setText("0.1238+21");
+        assertTrue(mainActivity.validateInput("×"));
+
+        resultText.setText("1823.");
+        assertFalse(mainActivity.validateInput());
+    }
+
+    @Test
+    public void should() {
+        //I am eating.
     }
 }
