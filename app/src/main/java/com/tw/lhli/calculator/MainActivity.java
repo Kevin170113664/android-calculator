@@ -50,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
         resultText.setText(String.format("%s%s", resultText.getText(), ((Button)view).getText()));
     }
 
+    @OnClick(R.id.button_equal)
+    public void calculate() {
+        resultText.setText(calculateInput());
+        saveResult();
+    }
+
+    @OnClick(R.id.button_delete)
+    public void deleteFromResultText() {
+        resultText.setText(deleteLastChar(resultText.getText().toString()));
+    }
+
+    @OnClick(R.id.button_clear)
+    public void clearResultText() {
+        resultText.setText("");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,28 +73,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         resultText.setText(readResult());
-
-        buttonEqual.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(calculateInput());
-                saveResult();
-            }
-        });
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText(deleteLastChar(resultText.getText().toString()));
-            }
-        });
-
-        buttonClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultText.setText("");
-            }
-        });
     }
 
     private void saveResult() {
