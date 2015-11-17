@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
         Stack stack = new Stack();
         String result = "0";
         for (String operation : reversePolishNotation) {
-            if (operation.matches("[0-9]+|[0-9]+\\.[0-9]+")) {
+            if (operation.matches(getString(R.string.reg_legal_number))) {
                 stack.push(operation);
             } else {
                 result = calculateTemp(stack.pop(), operation, stack.pop());
@@ -279,11 +279,11 @@ public class MainActivity extends AppCompatActivity {
         Stack stack = new Stack();
         List<String> reversePolishNotation = new ArrayList<>();
         for (String operation : originOperationArray) {
-            if (operation.matches("[0-9]+|[0-9]+\\.[0-9]+")) {
+            if (operation.matches(getString(R.string.reg_legal_number))) {
                 reversePolishNotation.add(operation);
-            } else if (operation.matches("^[(]")) {
+            } else if (operation.matches(getString(R.string.reg_left_bracket))) {
                 stack.push(operation);
-            } else if (operation.matches("^[)]")) {
+            } else if (operation.matches(getString(R.string.reg_right_bracket))) {
                 do {
                     reversePolishNotation.add(stack.pop());
                 } while (!stack.getStackTop().equals("("));
@@ -313,13 +313,13 @@ public class MainActivity extends AppCompatActivity {
     @NonNull
     private String removeDotFromInteger(String result) {
         if (result.substring(result.length() - 2, result.length()).equals(".0")) {
-            result = result.substring(0, result.length() - 2);
+            result = String.valueOf(Integer.parseInt(result));
         }
         return result;
     }
 
     private List<String> splitInput(String input) {
-        String regex = "(?<=op)|(?=op)".replace("op", "[-+×÷()]");
+        String regex = "(?<=op)|(?=op)".replace("op", getString(R.string.reg_split));
         List<String> result = Arrays.asList(input.split(regex));
         if (result.get(0).equals("")) {
             result = result.subList(1, result.size());
