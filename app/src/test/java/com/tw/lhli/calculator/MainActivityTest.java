@@ -24,6 +24,7 @@ public class MainActivityTest {
     @Bind(R.id.result_text) EditText resultText;
     @Bind(R.id.button_clear) Button buttonClear;
     @Bind(R.id.button_delete) Button buttonDelete;
+    @Bind(R.id.button_equal) Button buttonEqual;
 
     @Before
     public void setUp() {
@@ -100,5 +101,39 @@ public class MainActivityTest {
         mainActivity.findViewById(R.id.button_9).performClick();
 
         assertEquals("0123456789", resultText.getText().toString());
+    }
+
+    @Test
+    public void clickingEqualButton_shouldShowCorrectAnswerWithSingleOperator() {
+        resultText.setText("1+2");
+        buttonEqual.performClick();
+        assertEquals("3", resultText.getText().toString());
+
+        resultText.setText("1-2");
+        buttonEqual.performClick();
+        assertEquals("-1", resultText.getText().toString());
+
+        resultText.setText("88×1");
+        buttonEqual.performClick();
+        assertEquals("88", resultText.getText().toString());
+
+        resultText.setText("100÷5");
+        buttonEqual.performClick();
+        assertEquals("20", resultText.getText().toString());
+    }
+
+    @Test
+    public void clickingEqualButton_shouldShowCorrectAnswerWithMultipleOperators() {
+        resultText.setText("(5×5)+0.5÷5+(5-5)");
+        buttonEqual.performClick();
+        assertEquals("25.1", resultText.getText().toString());
+
+        resultText.setText("5÷5+0.5÷5+(5-1.5)");
+        buttonEqual.performClick();
+        assertEquals("4.6", resultText.getText().toString());
+
+        resultText.setText("(14.5-2.5)÷(0.5+5.5)");
+        buttonEqual.performClick();
+        assertEquals("2", resultText.getText().toString());
     }
 }

@@ -156,9 +156,10 @@ public class MainActivity extends AppCompatActivity {
     @NonNull
     private String removeDotFromInteger(String result) {
         if (result.substring(result.length() - 2, result.length()).equals(".0")) {
-            result = String.valueOf(Integer.parseInt(result));
+            return result.substring(0, result.length() - 2);
+        } else {
+            return result;
         }
-        return result;
     }
 
     private List<String> splitInput(String input) {
