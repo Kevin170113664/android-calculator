@@ -162,9 +162,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private List<String> splitInput(String input) {
+    protected List<String> splitInput(String input) {
         String regex = "(?<=op)|(?=op)".replace("op", getString(R.string.reg_split));
-        List<String> result = Arrays.asList(input.split(regex));
+        return removeEmptyElementsInArray(Arrays.asList(input.split(regex)));
+    }
+
+    @NonNull
+    private List<String> removeEmptyElementsInArray(List<String> result) {
         if (result.get(0).equals("")) {
             result = result.subList(1, result.size());
         } else if (result.get(result.size() - 1).equals("")) {

@@ -10,6 +10,9 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -135,5 +138,14 @@ public class MainActivityTest {
         resultText.setText("(14.5-2.5)÷(0.5+5.5)");
         buttonEqual.performClick();
         assertEquals("2", resultText.getText().toString());
+    }
+
+    @Test
+    public void shouldSplitInputFormulaCorrectly() {
+        List<String> expectList = Arrays.asList("(", "3.4", "-", "2.4", ")", "÷", "(", "100", "-", "98", ")");
+        assertEquals(expectList, mainActivity.splitInput("(3.4-2.4)÷(100-98)"));
+
+        expectList = Arrays.asList("2.5", "-", "0.4", "×", "(", "250", "+", "88", ")");
+        assertEquals(expectList, mainActivity.splitInput("2.5-0.4×(250+88)"));
     }
 }
