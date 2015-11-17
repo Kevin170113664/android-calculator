@@ -11,8 +11,8 @@ import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class)
+@Config(constants = BuildConfig.class, sdk=22)
+@RunWith(CalculatorTestRunner.class)
 public class MainActivityTest {
     @Test
     public void clickingButton_shouldShowInResultText() throws Exception {
