@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Stack {
 
-    List<String> stack = new ArrayList<String>();
+    List<String> stack = new ArrayList<>();
     private String stackTop;
     private static final HashMap<String, Integer> operationWeight;
 
     static {
-        operationWeight = new HashMap<String, Integer>();
+        operationWeight = new HashMap<>();
         operationWeight.put("×", 3);
         operationWeight.put("÷", 3);
         operationWeight.put("+", 2);

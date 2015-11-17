@@ -1,6 +1,5 @@
 package com.tw.lhli.calculator;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     Button button7;
     Button button8;
     Button button9;
-    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
