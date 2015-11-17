@@ -21,7 +21,7 @@ public class CalculatorTestRunner extends RobolectricTestRunner {
     public CalculatorTestRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
 
-        String buildVariant = (BuildConfig.FLAVOR.isEmpty() ? "" : BuildConfig.FLAVOR + "/") + BuildConfig.BUILD_TYPE;
+        String buildVariant = (BuildConfig.FLAVOR.isEmpty() ? "merged" + "/" : BuildConfig.FLAVOR + "/") + BuildConfig.BUILD_TYPE;
         String intermediatesPath = BuildConfig.class.getResource("").toString().replace("file:", "");
         intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/classes"));
 
