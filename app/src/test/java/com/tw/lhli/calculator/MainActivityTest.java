@@ -10,6 +10,9 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 import static junit.framework.Assert.assertEquals;
 
 
@@ -18,80 +21,84 @@ import static junit.framework.Assert.assertEquals;
 public class MainActivityTest {
 
     private MainActivity mainActivity;
+    @Bind(R.id.result_text) EditText resultText;
+    @Bind(R.id.button_clear) Button buttonClear;
+    @Bind(R.id.button_delete) Button buttonDelete;
 
     @Before
     public void setUp() {
         mainActivity = Robolectric.setupActivity(MainActivity.class);
+        ButterKnife.bind(this, mainActivity);
     }
 
     @Test
     public void clickingClearButton_shouldClearResultText() {
-        mainActivity.resultText.setText("This is my first android app.");
-        mainActivity.buttonClear.performClick();
+        resultText.setText("This is my first android app.");
+        buttonClear.performClick();
 
-        assertEquals("", mainActivity.resultText.getText().toString());
+        assertEquals("", resultText.getText().toString());
     }
 
     @Test
     public void clickingDeleteButton_shouldDeleteLastCharInResultText() {
-        mainActivity.resultText.setText("Hey, Hey, Hey");
-        mainActivity.buttonDelete.performClick();
+        resultText.setText("Hey, Hey, Hey");
+        buttonDelete.performClick();
 
-        assertEquals("Hey, Hey, He", mainActivity.resultText.getText().toString());
+        assertEquals("Hey, Hey, He", resultText.getText().toString());
     }
 
     @Test
     public void clickingDeleteButton_shouldNotDeleteAnythingWhenResultTextIsEmpty() {
-        mainActivity.resultText.setText("");
-        mainActivity.buttonDelete.performClick();
+        resultText.setText("");
+        buttonDelete.performClick();
 
-        assertEquals("", mainActivity.resultText.getText().toString());
+        assertEquals("", resultText.getText().toString());
     }
 
     @Test
     public void clickingOperatorButton_shouldShowInResultText() throws Exception {
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonPlus.performClick();
-        assertEquals("+", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_plus).performClick();
+        assertEquals("+", resultText.getText().toString());
 
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonMinus.performClick();
-        assertEquals("-", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_minus).performClick();
+        assertEquals("-", resultText.getText().toString());
 
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonMultiply.performClick();
-        assertEquals("×", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_multiply).performClick();
+        assertEquals("×", resultText.getText().toString());
 
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonDivide.performClick();
-        assertEquals("÷", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_divide).performClick();
+        assertEquals("÷", resultText.getText().toString());
 
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonLeftBracket.performClick();
-        assertEquals("(", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_left_bracket).performClick();
+        assertEquals("(", resultText.getText().toString());
 
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonRightBracket.performClick();
-        assertEquals(")", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_right_bracket).performClick();
+        assertEquals(")", resultText.getText().toString());
 
-        mainActivity.buttonClear.performClick();
-        mainActivity.buttonDot.performClick();
-        assertEquals(".", mainActivity.resultText.getText().toString());
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_dot).performClick();
+        assertEquals(".", resultText.getText().toString());
     }
 
     @Test
     public void clickingNumberButton_shouldShowInResultText() {
-        mainActivity.button0.performClick();
-        mainActivity.button1.performClick();
-        mainActivity.button2.performClick();
-        mainActivity.button3.performClick();
-        mainActivity.button4.performClick();
-        mainActivity.button5.performClick();
-        mainActivity.button6.performClick();
-        mainActivity.button7.performClick();
-        mainActivity.button8.performClick();
-        mainActivity.button9.performClick();
+        mainActivity.findViewById(R.id.button_0).performClick();
+        mainActivity.findViewById(R.id.button_1).performClick();
+        mainActivity.findViewById(R.id.button_2).performClick();
+        mainActivity.findViewById(R.id.button_3).performClick();
+        mainActivity.findViewById(R.id.button_4).performClick();
+        mainActivity.findViewById(R.id.button_5).performClick();
+        mainActivity.findViewById(R.id.button_6).performClick();
+        mainActivity.findViewById(R.id.button_7).performClick();
+        mainActivity.findViewById(R.id.button_8).performClick();
+        mainActivity.findViewById(R.id.button_9).performClick();
 
-        assertEquals( "0123456789", mainActivity.resultText.getText().toString());
+        assertEquals("0123456789", resultText.getText().toString());
     }
 }

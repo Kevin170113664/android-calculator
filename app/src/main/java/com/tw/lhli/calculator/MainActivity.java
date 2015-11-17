@@ -20,27 +20,6 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.result_text) EditText resultText;
-    @Bind(R.id.button_plus) Button buttonPlus;
-    @Bind(R.id.button_minus) Button buttonMinus;
-    @Bind(R.id.button_multiply) Button buttonMultiply;
-    @Bind(R.id.button_divide) Button buttonDivide;
-    @Bind(R.id.button_dot) Button buttonDot;
-    @Bind(R.id.button_equal) Button buttonEqual;
-    @Bind(R.id.button_delete) Button buttonDelete;
-    @Bind(R.id.button_clear) Button buttonClear;
-    @Bind(R.id.button_left_bracket) Button buttonLeftBracket;
-    @Bind(R.id.button_right_bracket) Button buttonRightBracket;
-
-    @Bind(R.id.button_0) Button button0;
-    @Bind(R.id.button_1) Button button1;
-    @Bind(R.id.button_2) Button button2;
-    @Bind(R.id.button_3) Button button3;
-    @Bind(R.id.button_4) Button button4;
-    @Bind(R.id.button_5) Button button5;
-    @Bind(R.id.button_6) Button button6;
-    @Bind(R.id.button_7) Button button7;
-    @Bind(R.id.button_8) Button button8;
-    @Bind(R.id.button_9) Button button9;
 
     @OnClick({R.id.button_plus, R.id.button_minus, R.id.button_multiply, R.id.button_divide,
               R.id.button_dot, R.id.button_left_bracket, R.id.button_right_bracket,
@@ -93,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         List<String> originOperationArray = splitInput(input);
         List<String> reversePolishNotation = transformToReversePolishNotation(originOperationArray);
         Double result = calculateReversePolishNotation(reversePolishNotation);
-        return removeDotFromInteger((result == null ? "Error" : result).toString());
+        return removeDotFromInteger((result == null ? getString(R.string.result_text_error) : result).toString());
     }
 
     private Double calculateReversePolishNotation(List<String> reversePolishNotation) {
@@ -104,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 stack.push(operation);
             } else {
                 result = calculateTemp(stack.pop(), operation, stack.pop());
-                if (result.equals("Error")) {
+                if (result.equals(getString(R.string.result_text_error))) {
                     return null;
                 } else {
                     stack.push(result);
@@ -128,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "÷":
                 if (Double.parseDouble(secondOperation) == 0.0) {
-                    result = "Error";
+                    result = getString(R.string.result_text_error);
                 } else {
                     result = String.format("%s", Double.parseDouble(firstOperation) / Double.parseDouble(secondOperation));
                 }
