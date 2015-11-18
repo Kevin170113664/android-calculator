@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
               R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4,
               R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9})
     public void showSymbolInResultText(View view) {
-        if (validateInput(String.format("%s", ((Button) view).getText()))) {
+        if (validateClickingButton(String.format("%s", ((Button) view).getText()))) {
             resultText.setText(String.format("%s%s", resultText.getText(), ((Button) view).getText()));
         }
     }
 
     @OnClick(R.id.button_equal)
     public void calculate() {
-        if (validateInput()) {
+        if (validateFormula()) {
             resultText.setText(calculateInput());
             saveResult();
         }
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected boolean validateInput(String inputCharacter) {
+    protected boolean validateClickingButton(String inputCharacter) {
         String input = resultText.getText().toString();
         if (input.length() > 0
                 && inputCharacter.matches(getString(R.string.reg_operators))
@@ -204,13 +204,20 @@ public class MainActivity extends AppCompatActivity {
                 && inputCharacter.equals("0")) {
             return false;
         }
-        if (inputCharacter.equals(".")) {
+        if (input.length() == 0 && inputCharacter.equals(".")) {
             resultText.setText(String.format("0%s", resultText.getText().toString()));
+            return true;
+        }
+        if (inputCharacter.equals(".") && input.matches(getString(R.string.reg_end_with_legal_number))) {
+            return false;
+        }
+        if (input.length() == 0 && inputCharacter.matches(getString(R.string.reg_cannot_begin_with_special_operators))) {
+            return false;
         }
         return true;
     }
 
-    protected boolean validateInput() {
+    protected boolean validateFormula() {
         String input = resultText.getText().toString();
         if (input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
             return false;

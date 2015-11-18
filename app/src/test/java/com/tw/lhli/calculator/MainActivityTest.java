@@ -167,17 +167,26 @@ public class MainActivityTest {
 
     @Test
     public void shouldValidateInput() {
+        buttonClear.performClick();
+        assertFalse(mainActivity.validateClickingButton(")"));
+
         resultText.setText("0÷");
-        assertFalse(mainActivity.validateInput("+"));
+        assertFalse(mainActivity.validateClickingButton("+"));
+
+        resultText.setText("-2÷1.23");
+        assertFalse(mainActivity.validateClickingButton("."));
+
+        resultText.setText("123÷333");
+        assertTrue(mainActivity.validateClickingButton("."));
 
         resultText.setText("0.1238+21");
-        assertTrue(mainActivity.validateInput("×"));
+        assertTrue(mainActivity.validateClickingButton("×"));
 
         resultText.setText("1823.");
-        assertFalse(mainActivity.validateInput());
+        assertFalse(mainActivity.validateFormula());
 
         resultText.setText("((((((((1238.12-2)-12)");
-        assertFalse(mainActivity.validateInput());
+        assertFalse(mainActivity.validateFormula());
     }
 
     @Test
@@ -199,8 +208,11 @@ public class MainActivityTest {
     public void clickingDotButton_shouldAutocompleteSmartly() {
         buttonClear.performClick();
         mainActivity.findViewById(R.id.button_dot).performClick();
-
         assertEquals("0.", resultText.getText().toString());
+
+        resultText.setText("()09");
+        mainActivity.findViewById(R.id.button_dot).performClick();
+        assertEquals("()09.", resultText.getText().toString());
     }
 
     @Test
