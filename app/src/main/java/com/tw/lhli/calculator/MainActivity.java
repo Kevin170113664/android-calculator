@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String calculateInput() {
-        List<String> originOperationList = splitInput(resultText.getText().toString());
+        List<String> originOperationList = splitInput(translateNegativeNumber(resultText.getText().toString()));
         List<String> reversePolishNotation = transformToReversePolishNotation(originOperationList);
         Double result = calculateReversePolishNotation(reversePolishNotation);
         return removeDotFromInteger((result == null ? getString(R.string.result_text_error) : result).toString());
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String calculateTemp(String secondOperation, String symbol, String firstOperation) {
         String result;
+        firstOperation = firstOperation == null? "0" : firstOperation;
         switch (symbol) {
             case "+":
                 result = String.format("%s", Double.parseDouble(firstOperation) + Double.parseDouble(secondOperation));
@@ -130,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (operation.matches(getString(R.string.reg_left_bracket))) {
                 stack.push(operation);
             } else if (operation.matches(getString(R.string.reg_right_bracket))) {
-                do {
+                while (!stack.getStackTop().equals("(")) {
                     reversePolishNotation.add(stack.pop());
-                } while (!stack.getStackTop().equals("("));
+                }
                 stack.pop();
             } else {
                 if (Stack.priority(operation, stack.getStackTop())) {
@@ -190,9 +191,16 @@ public class MainActivity extends AppCompatActivity {
 
     protected boolean validateInput(String inputCharacter) {
         String input = resultText.getText().toString();
-        if (inputCharacter.matches(getString(R.string.reg_operators))
-            && input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
+        if (input.length() > 0
+                && inputCharacter.matches(getString(R.string.reg_operators))
+                && input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
             return false;
+        }
+        if (input.matches("[-]|[+]|[×]|[÷]|[0]$") && inputCharacter.equals("0")) {
+            return false;
+        }
+        if (inputCharacter.equals(".")) {
+            resultText.setText("0");
         }
         return true;
     }
@@ -202,6 +210,17 @@ public class MainActivity extends AppCompatActivity {
         if (input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
             return false;
         }
+        if (input.matches(getString(R.string.reg_legal_answer))) {
+            return false;
+        }
         return true;
+    }
+
+    protected String translateNegativeNumber(String input) {
+        input = input.replace("(-", "(0-");
+        if (input.matches("^\\-.+")) {
+            input = String.format("0%s", input);
+        }
+        return input;
     }
 }

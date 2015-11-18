@@ -5,7 +5,8 @@
 
     <string name="reg_split">[-+×÷()]</string>
     <string name="reg_operators">[-]|[+]|[×]|[÷]|[.]</string>
-    <string name="reg_legal_number">[0-9]+|[0-9]+.[0-9]+</string>
+    <string name="reg_legal_number">[0-9]+|[0-9]+\.[0-9]+</string>
+    <string name="reg_legal_answer">[0-9]+|[0-9]+\.[0-9]+|\-[0-9]+|\-[0-9]+\.[0-9]+</string>
     <string name="reg_left_bracket">^[(]</string>
     <string name="reg_right_bracket">^[)]</string>
 

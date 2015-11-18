@@ -86,10 +86,6 @@ public class MainActivityTest {
         buttonClear.performClick();
         mainActivity.findViewById(R.id.button_right_bracket).performClick();
         assertEquals(")", resultText.getText().toString());
-
-        buttonClear.performClick();
-        mainActivity.findViewById(R.id.button_dot).performClick();
-        assertEquals(".", resultText.getText().toString());
     }
 
     @Test
@@ -125,21 +121,6 @@ public class MainActivityTest {
         resultText.setText("100÷5");
         buttonEqual.performClick();
         assertEquals("20", resultText.getText().toString());
-    }
-
-    @Test
-    public void clickingEqualButton_shouldShowCorrectAnswerWithMultipleOperators() {
-        resultText.setText("(5×5)+0.5÷5+(5-5)");
-        buttonEqual.performClick();
-        assertEquals("25.1", resultText.getText().toString());
-
-        resultText.setText("5÷5+0.5÷5+(5-1.5)");
-        buttonEqual.performClick();
-        assertEquals("4.6", resultText.getText().toString());
-
-        resultText.setText("(14.5-2.5)÷(0.5+5.5)");
-        buttonEqual.performClick();
-        assertEquals("2", resultText.getText().toString());
     }
 
     @Test
@@ -197,7 +178,40 @@ public class MainActivityTest {
     }
 
     @Test
-    public void should() {
-        //I am eating.
+    public void clickingZeroButton_shouldNotAllowShowMoreThanOneZeroBeforeDot() {
+        resultText.setText("0");
+        mainActivity.findViewById(R.id.button_0).performClick();
+
+        assertEquals("0", resultText.getText().toString());
+    }
+
+    @Test
+    public void shouldTranslateNegativeNumber() {
+        resultText.setText("-0.5×(-5)");
+
+        assertEquals("0-0.5×(0-5)", mainActivity.translateNegativeNumber(resultText.getText().toString()));
+    }
+
+    @Test
+    public void clickingDotButton_shouldAutocompleteSmartly() {
+        buttonClear.performClick();
+        mainActivity.findViewById(R.id.button_dot).performClick();
+
+        assertEquals("0.", resultText.getText().toString());
+    }
+
+    @Test
+    public void clickingEqualButton_shouldShowCorrectAnswerWithMultipleOperators() {
+        resultText.setText("-5÷5+0.5÷5+(5+(-1.5))");
+        buttonEqual.performClick();
+        assertEquals("2.6", resultText.getText().toString());
+
+        resultText.setText("(5×5)+0.5÷5+(5-5)");
+        buttonEqual.performClick();
+        assertEquals("25.1", resultText.getText().toString());
+
+        resultText.setText("(14.5-2.5)÷(0.5+5.5)");
+        buttonEqual.performClick();
+        assertEquals("2", resultText.getText().toString());
     }
 }
