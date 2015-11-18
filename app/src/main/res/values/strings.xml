@@ -9,6 +9,8 @@
     <string name="reg_legal_answer">[0-9]+|[0-9]+\.[0-9]+|\-[0-9]+|\-[0-9]+\.[0-9]+</string>
     <string name="reg_left_bracket">^[(]</string>
     <string name="reg_right_bracket">^[)]</string>
+    <string name="reg_end_with_operators_or_zero">[-]|[+]|[×]|[÷]|[0]$</string>
+    <string name="reg_begin_with_minus">^\-.+</string>
 
     <string name="button_plus">+</string>
     <string name="button_minus">-</string>

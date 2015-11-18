@@ -64,8 +64,8 @@
       <file leaf-file-name="MainActivityTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/test/java/com/tw/lhli/calculator/MainActivityTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7055961">
-              <caret line="195" column="52" selection-start-line="195" selection-start-column="52" selection-end-line="195" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.21411192">
+              <caret line="169" column="33" selection-start-line="169" selection-start-column="33" selection-end-line="169" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -74,8 +74,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tw/lhli/calculator/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.296296">
-              <caret line="202" column="33" selection-start-line="202" selection-start-column="33" selection-end-line="202" selection-end-column="33" />
+            <state vertical-scroll-proportion="-8.518518">
+              <caret line="220" column="13" selection-start-line="220" selection-start-column="13" selection-end-line="220" selection-end-column="13" />
               <folding>
                 <element signature="e#1598#1599#0" expanded="true" />
                 <element signature="e#1636#1637#0" expanded="true" />
@@ -84,15 +84,32 @@
                 <element signature="e#2829#2866#0" expanded="true" />
                 <element signature="e#3142#3178#0" expanded="true" />
                 <element signature="e#3354#3391#0" expanded="true" />
-                <element signature="e#4415#4452#0" expanded="true" />
-                <element signature="e#5021#5057#0" expanded="true" />
-                <element signature="e#5157#5193#0" expanded="true" />
-                <element signature="e#5278#5315#0" expanded="true" />
-                <element signature="e#6529#6558#0" expanded="true" />
-                <element signature="e#7410#7443#0" expanded="true" />
-                <element signature="e#7508#7541#0" expanded="true" />
-                <element signature="e#7970#8003#0" expanded="true" />
-                <element signature="e#8070#8106#0" expanded="true" />
+                <element signature="e#4488#4525#0" expanded="true" />
+                <element signature="e#5122#5158#0" expanded="true" />
+                <element signature="e#5258#5294#0" expanded="true" />
+                <element signature="e#5379#5416#0" expanded="true" />
+                <element signature="e#6630#6659#0" expanded="true" />
+                <element signature="e#7511#7544#0" expanded="true" />
+                <element signature="e#7609#7642#0" expanded="true" />
+                <element signature="e#7709#7759#0" expanded="true" />
+                <element signature="e#8165#8198#0" expanded="true" />
+                <element signature="e#8265#8301#0" expanded="true" />
+                <element signature="e#8595#8635#0" expanded="true" />
+                <element signature="e#8965#9001#0" expanded="true" />
+                <element signature="e#9090#9127#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/sdk/sources/android-23/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1409" column="45" selection-start-line="1409" selection-start-column="45" selection-end-line="1409" selection-end-column="45" />
+              <folding>
+                <element signature="e#50307#50308#0" expanded="true" />
+                <element signature="e#50357#50358#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,8 +158,8 @@
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.111111">
-              <caret line="8" column="92" selection-start-line="8" selection-start-column="92" selection-end-line="8" selection-end-column="92" />
+            <state vertical-scroll-proportion="-2.2962964">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -1996,7 +2013,7 @@
       <recent name="com.tw.lhli.calculator" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.app">
+  <component name="RunManager" selected="JUnit.MainActivityTest">
     <configuration default="false" name="MainActivityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2080,32 +2097,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="MainActivityTest.shouldTranslateNegativeNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.tw.lhli.calculator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="app" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.tw.lhli.calculator" />
-      <option name="MAIN_CLASS_NAME" value="com.tw.lhli.calculator.MainActivityTest" />
-      <option name="METHOD_NAME" value="shouldTranslateNegativeNumber" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="MainActivityTest.clickingDotButton_shouldAutocompleteSmartly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2119,6 +2110,32 @@
       <option name="PACKAGE_NAME" value="com.tw.lhli.calculator" />
       <option name="MAIN_CLASS_NAME" value="com.tw.lhli.calculator.MainActivityTest" />
       <option name="METHOD_NAME" value="clickingDotButton_shouldAutocompleteSmartly" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainActivityTest.shouldValidateInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.tw.lhli.calculator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="app" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.tw.lhli.calculator" />
+      <option name="MAIN_CLASS_NAME" value="com.tw.lhli.calculator.MainActivityTest" />
+      <option name="METHOD_NAME" value="shouldValidateInput" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -2316,16 +2333,16 @@
       <item index="1" class="java.lang.String" itemvalue="JUnit.MainActivityTest" />
       <item index="2" class="java.lang.String" itemvalue="Android Application.MainActivity" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingEqualButton_shouldShowCorrectAnswerWithMultipleOperators" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MainActivityTest.shouldTranslateNegativeNumber" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingDotButton_shouldAutocompleteSmartly" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingDotButton_shouldAutocompleteSmartly" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.MainActivityTest.shouldValidateInput" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.MainActivityTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingDotButton_shouldAutocompleteSmartly" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MainActivityTest.shouldValidateInput" />
         <item index="2" class="java.lang.String" itemvalue="Android Application.MainActivity" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingEqualButton_shouldShowCorrectAnswerWithMultipleOperators" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MainActivityTest.shouldTranslateNegativeNumber" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingDotButton_shouldAutocompleteSmartly" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.MainActivityTest.clickingEqualButton_shouldShowCorrectAnswerWithMultipleOperators" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -2508,7 +2525,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447775582636</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Added more validate logic to make app stable.">
+      <created>1447830408313</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1447830408314</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2566,7 +2589,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added id to the elements/" />
     <MESSAGE value="Bind functional button methods." />
     <MESSAGE value="Implemented basic calculator." />
     <MESSAGE value="Added clear button." />
@@ -2591,7 +2613,8 @@
     <MESSAGE value="Added test for split input." />
     <MESSAGE value="Added tests for operating reverse polish notatio." />
     <MESSAGE value="Added validation logic for input." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validation logic for input." />
+    <MESSAGE value="Added more validate logic to make app stable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more validate logic to make app stable." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2608,8 +2631,14 @@
           <properties />
           <option name="timeStamp" value="89" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/tw/lhli/calculator/MainActivity.java</url>
+          <line>244</line>
+          <properties />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="93" />
+      <option name="time" value="95" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -2622,6 +2651,12 @@
         <watch expression="stack.stack" language="JAVA" custom="" />
         <watch expression="reversePolishNotation" language="JAVA" custom="" />
         <watch expression="&quot;(&quot;.matches(getString(R.string.reg_left_bracket))" language="JAVA" custom="" />
+      </configuration>
+      <configuration name="JUnit">
+        <watch expression="stack.stack" language="JAVA" custom="" />
+        <watch expression="reversePolishNotation" language="JAVA" custom="" />
+        <watch expression="resultText.getText()" language="JAVA" custom="" />
+        <watch expression="isLeftBracketsMatchesRightBrackets(input)" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -2995,22 +3030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.111111">
-          <caret line="8" column="92" selection-start-line="8" selection-start-column="92" selection-end-line="8" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/sdk/sources/android-23/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="13.811189">
-          <caret line="1332" column="19" selection-start-line="1332" selection-start-column="19" selection-end-line="1332" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/sdk/sources/android-23/java/lang/StringToReal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7086247">
@@ -3064,10 +3083,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/sdk/sources/android-23/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1409" column="45" selection-start-line="1409" selection-start-column="45" selection-end-line="1409" selection-end-column="45" />
+          <folding>
+            <element signature="e#50307#50308#0" expanded="true" />
+            <element signature="e#50357#50358#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2962964">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tw/lhli/calculator/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.296296">
-          <caret line="202" column="33" selection-start-line="202" selection-start-column="33" selection-end-line="202" selection-end-column="33" />
+        <state vertical-scroll-proportion="-8.518518">
+          <caret line="220" column="13" selection-start-line="220" selection-start-column="13" selection-end-line="220" selection-end-column="13" />
           <folding>
             <element signature="e#1598#1599#0" expanded="true" />
             <element signature="e#1636#1637#0" expanded="true" />
@@ -3076,23 +3114,27 @@
             <element signature="e#2829#2866#0" expanded="true" />
             <element signature="e#3142#3178#0" expanded="true" />
             <element signature="e#3354#3391#0" expanded="true" />
-            <element signature="e#4415#4452#0" expanded="true" />
-            <element signature="e#5021#5057#0" expanded="true" />
-            <element signature="e#5157#5193#0" expanded="true" />
-            <element signature="e#5278#5315#0" expanded="true" />
-            <element signature="e#6529#6558#0" expanded="true" />
-            <element signature="e#7410#7443#0" expanded="true" />
-            <element signature="e#7508#7541#0" expanded="true" />
-            <element signature="e#7970#8003#0" expanded="true" />
-            <element signature="e#8070#8106#0" expanded="true" />
+            <element signature="e#4488#4525#0" expanded="true" />
+            <element signature="e#5122#5158#0" expanded="true" />
+            <element signature="e#5258#5294#0" expanded="true" />
+            <element signature="e#5379#5416#0" expanded="true" />
+            <element signature="e#6630#6659#0" expanded="true" />
+            <element signature="e#7511#7544#0" expanded="true" />
+            <element signature="e#7609#7642#0" expanded="true" />
+            <element signature="e#7709#7759#0" expanded="true" />
+            <element signature="e#8165#8198#0" expanded="true" />
+            <element signature="e#8265#8301#0" expanded="true" />
+            <element signature="e#8595#8635#0" expanded="true" />
+            <element signature="e#8965#9001#0" expanded="true" />
+            <element signature="e#9090#9127#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/tw/lhli/calculator/MainActivityTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7055961">
-          <caret line="195" column="52" selection-start-line="195" selection-start-column="52" selection-end-line="195" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.21411192">
+          <caret line="169" column="33" selection-start-line="169" selection-start-column="33" selection-end-line="169" selection-end-column="33" />
           <folding />
         </state>
       </provider>

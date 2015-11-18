@@ -98,22 +98,26 @@ public class MainActivity extends AppCompatActivity {
 
     private String calculateTemp(String secondOperation, String symbol, String firstOperation) {
         String result;
-        firstOperation = firstOperation == null? "0" : firstOperation;
+        firstOperation = firstOperation == null ? "0" : firstOperation;
         switch (symbol) {
             case "+":
-                result = String.format("%s", Double.parseDouble(firstOperation) + Double.parseDouble(secondOperation));
+                result = String.format("%s", Double.parseDouble(firstOperation)
+                        + Double.parseDouble(secondOperation));
                 break;
             case "-":
-                result = String.format("%s", Double.parseDouble(firstOperation) - Double.parseDouble(secondOperation));
+                result = String.format("%s", Double.parseDouble(firstOperation)
+                        - Double.parseDouble(secondOperation));
                 break;
             case "×":
-                result = String.format("%s", Double.parseDouble(firstOperation) * Double.parseDouble(secondOperation));
+                result = String.format("%s", Double.parseDouble(firstOperation)
+                        * Double.parseDouble(secondOperation));
                 break;
             case "÷":
                 if (Double.parseDouble(secondOperation) == 0.0) {
                     result = getString(R.string.result_text_error);
                 } else {
-                    result = String.format("%s", Double.parseDouble(firstOperation) / Double.parseDouble(secondOperation));
+                    result = String.format("%s", Double.parseDouble(firstOperation)
+                            / Double.parseDouble(secondOperation));
                 }
                 break;
             default:
@@ -196,11 +200,12 @@ public class MainActivity extends AppCompatActivity {
                 && input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
             return false;
         }
-        if (input.matches("[-]|[+]|[×]|[÷]|[0]$") && inputCharacter.equals("0")) {
+        if (input.matches(getString(R.string.reg_end_with_operators_or_zero))
+                && inputCharacter.equals("0")) {
             return false;
         }
         if (inputCharacter.equals(".")) {
-            resultText.setText("0");
+            resultText.setText(String.format("0%s", resultText.getText().toString()));
         }
         return true;
     }
@@ -213,14 +218,30 @@ public class MainActivity extends AppCompatActivity {
         if (input.matches(getString(R.string.reg_legal_answer))) {
             return false;
         }
+        if (!isLeftBracketsMatchesRightBrackets(input)) {
+            return false;
+        }
         return true;
     }
 
     protected String translateNegativeNumber(String input) {
         input = input.replace("(-", "(0-");
-        if (input.matches("^\\-.+")) {
+        if (input.matches(getString(R.string.reg_begin_with_minus))) {
             input = String.format("0%s", input);
         }
         return input;
+    }
+
+    protected boolean isLeftBracketsMatchesRightBrackets(String input) {
+        int leftBrackets = 0;
+        int rightBrackets = 0;
+        for (Character character : input.toCharArray()) {
+            if (character.toString().matches(getString(R.string.reg_left_bracket))) {
+                leftBrackets++;
+            } else if (character.toString().matches(getString(R.string.reg_right_bracket))) {
+                rightBrackets++;
+            }
+        }
+        return leftBrackets == rightBrackets;
     }
 }

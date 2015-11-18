@@ -175,6 +175,9 @@ public class MainActivityTest {
 
         resultText.setText("1823.");
         assertFalse(mainActivity.validateInput());
+
+        resultText.setText("((((((((1238.12-2)-12)");
+        assertFalse(mainActivity.validateInput());
     }
 
     @Test
