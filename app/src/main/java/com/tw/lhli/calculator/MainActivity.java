@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void updateResultToDb(String formula, String result) {
-        HistoryDatabase historyDatabase = new HistoryDatabase();
-        historyDatabase.insertToDb(formula, result);
+        Database database = new Database(this);
+        database.insertToDb(formula, result);
     }
 }

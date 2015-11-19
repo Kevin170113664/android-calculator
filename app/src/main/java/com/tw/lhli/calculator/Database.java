@@ -2,11 +2,18 @@ package com.tw.lhli.calculator;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-public final class HistoryDatabase {
+public final class Database {
+    HistoryDbHelper historyDbHelper;
+
+    public Database(Context context) {
+        historyDbHelper = new HistoryDbHelper(context);
+    }
+
     public static class HistoryTable implements BaseColumns {
         public static final String TABLE_NAME = "History";
         public static final String COLUMN_FORMULA = "formula";
@@ -48,17 +55,35 @@ public final class HistoryDatabase {
     }
 
     public void insertToDb(String formula, String result) {
-//        HistoryDbHelper mDbHelper = new HistoryDbHelper(getContext());
-//        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//        values.put(HistoryDatabase.HistoryTable.COLUMN_FORMULA, formula);
-//        values.put(HistoryDatabase.HistoryTable.COLUMN_RESULT, result);
-//
-//        long newRowId = db.insert(
-//                HistoryDatabase.HistoryTable.TABLE_NAME,
-//                null,
-//                values);
+        SQLiteDatabase db = historyDbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Database.HistoryTable.COLUMN_FORMULA, formula);
+        values.put(Database.HistoryTable.COLUMN_RESULT, result);
+
+        long newRowId = db.insert(
+                Database.HistoryTable.TABLE_NAME,
+                null,
+                values);
+    }
+
+    public void selectAllFromDb() {
+        SQLiteDatabase db = historyDbHelper.getReadableDatabase();
+
+        String[] projection = {
+                HistoryTable.COLUMN_FORMULA,
+                HistoryTable.COLUMN_RESULT,
+        };
+
+        Cursor c = db.query(
+                HistoryTable.TABLE_NAME,  // The table to query
+                projection,               // The columns to return
+                null,                     // The columns for the WHERE clause
+                null,                     // The values for the WHERE clause
+                null,                     // don't group the rows
+                null,                     // don't filter by row groups
+                null                      // The sort order
+        );
     }
 }
 
