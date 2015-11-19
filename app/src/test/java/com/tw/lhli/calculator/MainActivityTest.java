@@ -71,21 +71,21 @@ public class MainActivityTest {
         mainActivity.findViewById(R.id.button_minus).performClick();
         assertEquals("-", resultText.getText().toString());
 
-        buttonClear.performClick();
+        resultText.setText("0");
         mainActivity.findViewById(R.id.button_multiply).performClick();
-        assertEquals("×", resultText.getText().toString());
+        assertEquals("0×", resultText.getText().toString());
 
-        buttonClear.performClick();
+        resultText.setText("0");
         mainActivity.findViewById(R.id.button_divide).performClick();
-        assertEquals("÷", resultText.getText().toString());
+        assertEquals("0÷", resultText.getText().toString());
 
         buttonClear.performClick();
         mainActivity.findViewById(R.id.button_left_bracket).performClick();
         assertEquals("(", resultText.getText().toString());
 
-        buttonClear.performClick();
+        resultText.setText("0");
         mainActivity.findViewById(R.id.button_right_bracket).performClick();
-        assertEquals(")", resultText.getText().toString());
+        assertEquals("0)", resultText.getText().toString());
     }
 
     @Test
