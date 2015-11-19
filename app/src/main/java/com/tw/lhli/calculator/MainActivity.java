@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
             resultText.setText(String.format("0%s", resultText.getText().toString()));
             return true;
         }
-        if (inputCharacter.equals(".") && input.matches(getString(R.string.reg_end_with_legal_number))) {
+        if (inputCharacter.equals(".") && input.matches(".*[0-9]+\\.[0-9]+$")) {
             return false;
         }
         if (input.length() == 0 && inputCharacter.matches(getString(R.string.reg_cannot_begin_with_special_operators))) {

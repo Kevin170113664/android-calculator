@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class Database {
     HistoryDbHelper historyDbHelper;
 
@@ -17,7 +20,7 @@ public final class Database {
     public static class HistoryTable implements BaseColumns {
         public static final String TABLE_NAME = "History";
         public static final String COLUMN_FORMULA = "formula";
-        public static final String COLUMN_RESULT = "title";
+        public static final String COLUMN_RESULT = "result";
     }
 
     private static final String TEXT_TYPE = " TEXT";
@@ -26,7 +29,7 @@ public final class Database {
             "CREATE TABLE " + HistoryTable.TABLE_NAME + " (" +
                     HistoryTable._ID + " INTEGER PRIMARY KEY," +
                     HistoryTable.COLUMN_FORMULA + TEXT_TYPE + COMMA_SEP +
-                    HistoryTable.COLUMN_RESULT + TEXT_TYPE + COMMA_SEP +
+                    HistoryTable.COLUMN_RESULT + TEXT_TYPE +
                     " )";
 
     private static final String SQL_DELETE_TABLE =
@@ -61,29 +64,39 @@ public final class Database {
         values.put(Database.HistoryTable.COLUMN_FORMULA, formula);
         values.put(Database.HistoryTable.COLUMN_RESULT, result);
 
-        long newRowId = db.insert(
-                Database.HistoryTable.TABLE_NAME,
-                null,
-                values);
+        db.insert(Database.HistoryTable.TABLE_NAME, null, values);
     }
 
-    public void selectAllFromDb() {
+    public List<String> selectAllFromDb() {
         SQLiteDatabase db = historyDbHelper.getReadableDatabase();
-
+        List<String> historyList = new ArrayList<>();
         String[] projection = {
                 HistoryTable.COLUMN_FORMULA,
                 HistoryTable.COLUMN_RESULT,
         };
 
-        Cursor c = db.query(
+        String sortOrder =
+                HistoryTable._ID + " DESC";
+
+        Cursor cursor = db.query(
                 HistoryTable.TABLE_NAME,  // The table to query
                 projection,               // The columns to return
                 null,                     // The columns for the WHERE clause
                 null,                     // The values for the WHERE clause
                 null,                     // don't group the rows
                 null,                     // don't filter by row groups
-                null                      // The sort order
+                sortOrder                 // The sort order
         );
+
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            String formula = cursor.getString(cursor.getColumnIndexOrThrow(HistoryTable.COLUMN_FORMULA));
+            String result = cursor.getString(cursor.getColumnIndexOrThrow(HistoryTable.COLUMN_RESULT));
+            historyList.add(formula + " = " + result);
+            cursor.moveToNext();
+        }
+
+        return historyList;
     }
 }
 

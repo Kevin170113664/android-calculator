@@ -32,15 +32,8 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private List<String> getData(){
-        List<String> data = new ArrayList<>();
-        data.add("测试数据1");
-        data.add("测试数据2");
-        data.add("测试数据3");
-        data.add("测试数据4");
-
         Database database = new Database(this);
-        database.selectAllFromDb();
 
-        return data;
+        return database.selectAllFromDb();
     }
 }
