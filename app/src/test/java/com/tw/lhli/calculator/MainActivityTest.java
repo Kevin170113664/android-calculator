@@ -173,7 +173,7 @@ public class MainActivityTest {
         resultText.setText("0÷");
         assertFalse(mainActivity.validateClickingButton("+"));
 
-        resultText.setText("-2÷1.23");
+        resultText.setText("-2÷1.23(");
         assertFalse(mainActivity.validateClickingButton("."));
 
         resultText.setText("123÷333");

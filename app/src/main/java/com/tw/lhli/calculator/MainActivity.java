@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void calculate() {
         if (validateFormula()) {
             String formula = resultText.getText().toString();
-            String result = calculateInput().toString();
+            String result = calculateInput();
             resultText.setText(result);
             updateResultToDb(formula, result);
             saveResult();
@@ -72,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_favorite) {
-            // TODO Open history page
+        if (item.getItemId() == R.id.action_history) {
             startActivity(new Intent(this, HistoryActivity.class));
             return true;
         }
@@ -230,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             resultText.setText(String.format("0%s", resultText.getText().toString()));
             return true;
         }
-        if (inputCharacter.equals(".") && input.matches(".*[0-9]+\\.[0-9]+$")) {
+        if (inputCharacter.equals(".") && input.matches(".*[0-9]+\\.[0-9]+$|.*[(]$|.*[)]$")) {
             return false;
         }
         if (input.length() == 0 && inputCharacter.matches(getString(R.string.reg_cannot_begin_with_special_operators))) {

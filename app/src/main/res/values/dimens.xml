@@ -5,4 +5,5 @@
     <dimen name="activity_button_activity_horizontal_margin">4dp</dimen>
     <dimen name="button_text_size">12pt</dimen>
     <dimen name="landscape_button_text_size">8pt</dimen>
+    <dimen name="history_list_padding_left">5pt</dimen>
 </resources>
