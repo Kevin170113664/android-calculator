@@ -10,16 +10,23 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class HistoryActivity extends AppCompatActivity {
 
-    private ListView listView;
+    @Bind(R.id.history_list)
+    protected ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listView = new ListView(this);
-        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, getData()));
-        setContentView(listView);
+
+        setContentView(R.layout.activity_history);
+
+        ButterKnife.bind(this);
+
+        listView.setAdapter(new CalculatorListAdapter(getData()));
     }
 
     @Override

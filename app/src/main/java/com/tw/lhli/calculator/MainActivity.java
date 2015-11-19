@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         Stack stack = new Stack();
         String result = "0";
         for (String operation : reversePolishNotation) {
-            if (operation.matches(getString(R.string.reg_legal_number))) {
+            if (operation.matches("[0-9]+|[0-9]+\\.[0-9]+")) {
                 stack.push(operation);
             } else {
                 result = calculateTemp(stack.pop(), operation, stack.pop());
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         Stack stack = new Stack();
         List<String> reversePolishNotation = new ArrayList<>();
         for (String operation : originOperationArray) {
-            if (operation.matches(getString(R.string.reg_legal_number))) {
+            if (operation.matches("[0-9]+|[0-9]+\\.[0-9]+")) {
                 reversePolishNotation.add(operation);
             } else if (operation.matches(getString(R.string.reg_left_bracket))) {
                 stack.push(operation);
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         if (input.substring(input.length() - 1).matches(getString(R.string.reg_operators))) {
             return false;
         }
-        if (input.matches(getString(R.string.reg_legal_answer))) {
+        if (input.matches("[0-9]+|[0-9]+\\.[0-9]+|\\-[0-9]+|\\-[0-9]+\\.[0-9]+")) {
             return false;
         }
         if (!isLeftBracketsMatchesRightBrackets(input)) {

@@ -5,15 +5,9 @@
     android:background="@color/colorBackground"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/history_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/history_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@color/colorBackground"></ListView>
-    </LinearLayout>
+        android:background="@color/colorBackground"/>
 </LinearLayout>
