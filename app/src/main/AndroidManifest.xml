@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".HistoryActivity"
+            android:parentActivityName=".MainActivity"
             android:label="@string/history_record"/>
     </application>
 
