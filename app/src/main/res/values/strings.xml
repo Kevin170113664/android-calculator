@@ -2,6 +2,7 @@
     <string name="app_name">Calculator</string>
     <string name="last_result">Last result</string>
     <string name="result_text_error">Error</string>
+    <string name="action_bar_history_title">History</string>
 
     <string name="reg_split">[-+×÷()]</string>
     <string name="reg_cannot_begin_with_special_operators">[×÷)]</string>
@@ -34,4 +35,5 @@
     <string name="button_7">7</string>
     <string name="button_8">8</string>
     <string name="button_9">9</string>
+    <string name="history_record">历史记录</string>
 </resources>
