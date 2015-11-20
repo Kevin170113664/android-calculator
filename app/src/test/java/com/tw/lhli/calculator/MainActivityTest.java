@@ -230,6 +230,10 @@ public class MainActivityTest {
         resultText.setText("938");
         mainActivity.findViewById(R.id.button_left_bracket).performClick();
         assertEquals("938×(", resultText.getText().toString());
+
+        resultText.setText("(2-938)");
+        mainActivity.findViewById(R.id.button_left_bracket).performClick();
+        assertEquals("(2-938)×(", resultText.getText().toString());
     }
 
     @Test

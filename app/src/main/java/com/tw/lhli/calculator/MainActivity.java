@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             resultText.setText(String.format("%s×", resultText.getText().toString()));
             return true;
         }
-        if (inputCharacter.matches("[0-9]") && input.matches(".*[)]$")) {
+        if (inputCharacter.matches("[0-9]|[(]") && input.matches(".*[)]$")) {
             resultText.setText(String.format("%s×", resultText.getText().toString()));
             return true;
         }
