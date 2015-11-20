@@ -229,6 +229,14 @@ public class MainActivity extends AppCompatActivity {
             resultText.setText(String.format("0%s", resultText.getText().toString()));
             return true;
         }
+        if (inputCharacter.equals("(") && input.matches(".*[0-9]+\\.[0-9]+$|.*[0-9]$")) {
+            resultText.setText(String.format("%s×", resultText.getText().toString()));
+            return true;
+        }
+        if (inputCharacter.matches("[0-9]") && input.matches(".*[)]$")) {
+            resultText.setText(String.format("%s×", resultText.getText().toString()));
+            return true;
+        }
         if (inputCharacter.equals(".") && input.matches(".*[0-9]+\\.[0-9]+$|.*[(]$|.*[)]$")) {
             return false;
         }

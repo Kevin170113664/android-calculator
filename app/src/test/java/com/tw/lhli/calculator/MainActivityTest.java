@@ -219,6 +219,14 @@ public class MainActivityTest {
         resultText.setText("()09");
         mainActivity.findViewById(R.id.button_dot).performClick();
         assertEquals("()09.", resultText.getText().toString());
+
+        resultText.setText("(-2+3)");
+        mainActivity.findViewById(R.id.button_7).performClick();
+        assertEquals("(-2+3)×7", resultText.getText().toString());
+
+        resultText.setText("938");
+        mainActivity.findViewById(R.id.button_left_bracket).performClick();
+        assertEquals("938×(", resultText.getText().toString());
     }
 
     @Test
