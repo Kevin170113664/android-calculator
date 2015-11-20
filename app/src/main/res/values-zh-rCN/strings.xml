@@ -1,9 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="app_name" translatable="false">Calculator</string>
-    <string name="history_record">History</string>
+    <string name="app_name">计算器</string>
+    <string name="history_record">历史记录</string>
     <string name="last_result">Last result</string>
     <string name="result_text_error">Error</string>
-    <string name="action_bar_history_title" translatable="false">History</string>
+    <string name="action_bar_history_title">History</string>
 
     <string name="reg_split">[-+×÷()]</string>
     <string name="reg_cannot_begin_with_special_operators">[×÷)]</string>
