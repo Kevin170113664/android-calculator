@@ -11,5 +11,6 @@
         android:background="@color/colorBackground"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/history_list_padding_left"
-        android:textAppearance="?android:attr/textAppearanceListItem" />
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:textColor="@color/black" />
 </LinearLayout>

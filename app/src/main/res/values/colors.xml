@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00BCD4</color>
-    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="colorPrimary">#0097A7</color>
+    <color name="colorPrimaryDark">#006064</color>
     <color name="colorAccent">#FF80AB</color>
-    <color name="colorBackground">#B2EBF2</color>
+    <color name="colorBackground">#E0F7FA</color>
     <color name="colorButtonLightCyanBackground">#4DD0E1</color>
     <color name="colorButtonLightCyanPressedBackground">#00ACC1</color>
-    <color name="colorButtonDarkCyanBackground">#26C6DA</color>
-    <color name="colorButtonDarkCyanPressedBackground">#0097A7</color>
-    <color name="colorButtonText">#000000</color>
+    <color name="colorButtonDarkCyanBackground">#0097A7</color>
+    <color name="colorButtonDarkCyanPressedBackground">#006064</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="colorCyan50">#E0F7FA</color>
+    <color name="colorCyan100">#B2EBF2</color>
+    <color name="colorCyan200">#80DEEA</color>
+    <color name="colorCyan300">#4DD0E1</color>
+    <color name="colorCyan400">#26C6DA</color>
+    <color name="colorCyan500">#00BCD4</color>
+    <color name="colorCyan600">#00ACC1</color>
+    <color name="colorCyan700">#0097A7</color>
+    <color name="colorCyan800">#00838F</color>
+    <color name="colorCyan900">#006064</color>
+    <color name="colorCyanA100">#84FFFF</color>
+    <color name="colorCyanA200">#18FFFF</color>
+    <color name="colorCyanA400">#00E5FF</color>
+    <color name="colorCyanA700">#00B8D4</color>
 </resources>

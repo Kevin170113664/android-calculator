@@ -28,7 +28,7 @@
                 android:layout_height="30pt"
                 android:editable="false"
                 android:gravity="end"
-                android:textColor="@color/colorButtonText"
+                android:textColor="@color/black"
                 android:textSize="@dimen/landscape_button_text_size" />
 
             <LinearLayout
@@ -45,7 +45,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_left_bracket"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -56,7 +56,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_right_bracket"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -67,7 +67,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_clear"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -78,7 +78,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_delete"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
             </LinearLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_7"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -107,7 +107,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_8"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -118,7 +118,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_9"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -129,7 +129,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_divide"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
             </LinearLayout>
 
@@ -147,7 +147,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_4"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -158,7 +158,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_5"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -169,7 +169,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_6"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -180,7 +180,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_multiply"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
             </LinearLayout>
 
@@ -198,7 +198,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_1"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -209,7 +209,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_2"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -220,7 +220,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_3"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -231,7 +231,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_minus"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
             </LinearLayout>
 
@@ -249,7 +249,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_dot"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -260,7 +260,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_light_cyan"
                     android:text="@string/button_0"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -271,7 +271,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_equal"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
 
                 <Button
@@ -282,7 +282,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_dark_cyan"
                     android:text="@string/button_plus"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/landscape_button_text_size" />
             </LinearLayout>
         </LinearLayout>
