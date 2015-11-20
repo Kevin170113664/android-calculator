@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (operation.matches(getString(R.string.reg_left_bracket))) {
                 stack.push(operation);
             } else if (operation.matches(getString(R.string.reg_right_bracket))) {
-                while (!stack.getStackTop().equals("(")) {
+                while (stack.getStackTop() != null && !stack.getStackTop().equals("(")) {
                     reversePolishNotation.add(stack.pop());
                 }
                 stack.pop();
