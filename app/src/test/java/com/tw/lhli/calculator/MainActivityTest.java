@@ -184,6 +184,9 @@ public class MainActivityTest {
 
         resultText.setText("(");
         assertFalse(mainActivity.validateClickingButton("×"));
+
+        resultText.setText("123.");
+        assertFalse(mainActivity.validateClickingButton(")"));
     }
 
     @Test
