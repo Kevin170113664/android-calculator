@@ -246,6 +246,9 @@ public class MainActivity extends AppCompatActivity {
         if (inputCharacter.matches("[+×÷)]") && input.matches(".*[(]$")) {
             return false;
         }
+        if (input.length() >= 30) {
+            return false;
+        }
         return true;
     }
 
