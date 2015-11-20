@@ -235,6 +235,9 @@ public class MainActivity extends AppCompatActivity {
         if (input.length() == 0 && inputCharacter.matches(getString(R.string.reg_cannot_begin_with_special_operators))) {
             return false;
         }
+        if (inputCharacter.matches("[+×÷)]") && input.matches(".*[(]$")) {
+            return false;
+        }
         return true;
     }
 

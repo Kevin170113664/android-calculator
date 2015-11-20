@@ -166,7 +166,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void shouldValidateInput() {
+    public void clickingSymbolButton_shouldValidateInput() {
         buttonClear.performClick();
         assertFalse(mainActivity.validateClickingButton(")"));
 
@@ -182,6 +182,12 @@ public class MainActivityTest {
         resultText.setText("0.1238+21");
         assertTrue(mainActivity.validateClickingButton("×"));
 
+        resultText.setText("(");
+        assertFalse(mainActivity.validateClickingButton("×"));
+    }
+
+    @Test
+    public void clickingEqualButton_shouldValidateInput() {
         resultText.setText("1823.");
         assertFalse(mainActivity.validateFormula());
 

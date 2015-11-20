@@ -40,7 +40,7 @@ public class CalculatorListAdapter extends BaseAdapter {
 
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.calculate_item, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.calculate_result_item, parent, false);
             holder.calulateText = (TextView) convertView.findViewById(R.id.calculate_text);
 
             convertView.setTag(holder);
