@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by lhli on 11/19/15.
- */
 public class CalculatorListAdapter extends BaseAdapter {
 
     private List<String> data;
@@ -41,19 +38,19 @@ public class CalculatorListAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.calculate_result_item, parent, false);
-            holder.calulateText = (TextView) convertView.findViewById(R.id.calculate_text);
+            holder.calculateText = (TextView) convertView.findViewById(R.id.calculate_text);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.calulateText.setText(getItem(position));
+        holder.calculateText.setText(getItem(position));
 
         return convertView;
     }
 
     class ViewHolder {
-        public TextView calulateText;
+        public TextView calculateText;
     }
 }
